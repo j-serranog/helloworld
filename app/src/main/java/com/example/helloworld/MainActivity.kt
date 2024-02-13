@@ -11,6 +11,8 @@ import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory
+import org.osmdroid.views.MapView
 
 class MainActivity : AppCompatActivity() {
 
@@ -45,6 +47,21 @@ class MainActivity : AppCompatActivity() {
             )
         } else {
             getLastLocation()
+        }
+    }
+
+    class MapActivity : AppCompatActivity() {
+
+        private lateinit var mapView: MapView
+
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_map)
+
+            // ...
+
+            mapView = findViewById(R.id.map)
+            mapView.setTileSource(TileSourceFactory.MAPNIK)
         }
     }
 
